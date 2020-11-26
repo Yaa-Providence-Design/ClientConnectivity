@@ -1,10 +1,8 @@
 package com.nyansapo.client_service.models;
 
 //importing necessary libraries
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +14,8 @@ public class Client {
     private String name;
     private String email;
     private String password;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Portfolio> portfolioList;
 
 
     //user constructor

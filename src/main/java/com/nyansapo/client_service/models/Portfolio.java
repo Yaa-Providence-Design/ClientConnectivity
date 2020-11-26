@@ -1,9 +1,21 @@
 package com.nyansapo.client_service.models;
 
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "portfolio")
 public class Portfolio {
-    private String name;
+    @Id
     private String id;
+    private String name;
     private String stock_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Client client;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Stock> stockList;
 
 
     public String getName() {
