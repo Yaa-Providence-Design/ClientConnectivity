@@ -1,11 +1,16 @@
 package com.nyansapo.client_service.models;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "orderType")
 public class OrderType {
     @Id
     private int id;
     private String side;
+
+    @OneToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
+    private Order order;
 
     public OrderType() {
     }

@@ -14,9 +14,12 @@ public class Portfolio {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Client client;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Stock> stockList;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 
     public String getName() {
         return name;

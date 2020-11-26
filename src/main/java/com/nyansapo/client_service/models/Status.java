@@ -1,11 +1,16 @@
 package com.nyansapo.client_service.models;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "status")
 public class Status {
     @Id
     private int id;
     private String statusName;
+
+    @OneToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
+    private Order order;
 
     public Status(String statusName) {
         this.statusName = statusName;

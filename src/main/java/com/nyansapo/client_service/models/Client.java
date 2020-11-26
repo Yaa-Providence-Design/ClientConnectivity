@@ -17,6 +17,9 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Portfolio> portfolioList;
 
+    @OneToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
+    private Order order;
+
 
     //user constructor
     public Client() {

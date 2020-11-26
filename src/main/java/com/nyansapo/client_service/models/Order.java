@@ -1,8 +1,7 @@
 package com.nyansapo.client_service.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order")
@@ -13,6 +12,18 @@ public class Order {
     private double quantity;
     private double price;
     private String side;
+
+    @OneToOne(targetEntity = OrderType.class, cascade = CascadeType.ALL)
+    private OrderType orderType;
+
+    @OneToOne(targetEntity = Status.class, cascade = CascadeType.ALL)
+    private Status status;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Portfolio> portfolioList;
+
+    @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
+    private Client client;
 
     public Order() {
     }
